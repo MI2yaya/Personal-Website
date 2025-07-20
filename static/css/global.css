@@ -6,7 +6,7 @@
 }
 
 :root {
-    font-size: clamp(12px, calc(1rem + 0.5vw), 24px);
+    font-size: clamp(10px, 1.5vw, 24px);
 }
 
 html,body{
@@ -18,10 +18,10 @@ html,body{
     background-color: #0E0014;
 }
 
-main{
+.page{
     display: grid;
     flex-direction: column;
-    padding: 40px 80px 80px 80px;
+    padding: 40px 80px 0px 80px;
     grid-template-columns: repeat(12, 1fr); /* 12 equal-width columns */
     grid-template-rows: repeat(13, 1fr);    /* 13 equal-height rows */
     gap: 10px;
