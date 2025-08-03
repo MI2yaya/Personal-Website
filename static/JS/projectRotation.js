@@ -2,32 +2,83 @@ const project1 = document.getElementById('project1');
 const project2 = document.getElementById('project2');
 const project3 = document.getElementById('project3');
 const container = document.getElementById('projects');
-let projects={
-    0:"FFTCollatz",
-    1:"GPAsKalman",
-    2:"PsychotherapyTraining",
-    3:"356Days",
-    4:"beatBlockDifficultyCalculator"
-}
-let descriptions={
-    0: "Visual analysis of the Collatz conjecture via FFT.",
-    1: "Using Gaussian Processes and Kalman Filters together.",
-    2: "A psychotherapist training tool based on AI feedback.",
-    3: "A game dedicated to my girlfriend, for all 356 days of dating.",
-    4: "An app that calculates difficulty in Beatblock."
-}
-const size = Object.keys(projects).length;
+let projects=[
+    {
+        png:"FFTCollatz",
+        description:"Visual analysis of the Collatz conjecture via FFT.",
+        href:"javascript:loadPaper(2);document.getElementById('papers').scrollIntoView({behavior:'smooth'});",
+        medal:'goldMedal'
+    },
+    {
+        png:"GPAsKalman",
+        description:"Using Gaussian Processes and Kalman Filters together.",
+        href:"javascript:loadPaper(3);document.getElementById('papers').scrollIntoView({behavior:'smooth'});",
+        medal:'N/A'
+    },
+    {
+        png:"PsychotherapyTraining",
+        description:"A psychotherapist training tool based on AI feedback.",
+        href: "javascript:loadPaper(1);document.getElementById('papers').scrollIntoView({behavior:'smooth'});",
+        medal:'LISEF'
+    },
+    {
+        png:"356Days",
+        description:'A game dedicated to my girlfriend who I tragically lost, for all 356 days of dating.',
+        href:'N/A',
+        medal:'N/A'
+    },
+    {
+        png:"beatBlockDifficultyCalculator",
+        description:'An app that calculates difficulty in Beatblock.',
+        href:'N/A',
+        medal:'N/A'
+    },
+    {
+        png:'coderBackground',
+        description:'Custom HTML + JS Background run with Lively Wallpaper',
+        href:'https://deluxe-lolly-ea5bf8.netlify.app/',
+        medal:'N/A'
+    },
+    {
+        png:"notesAPI",
+        description:'Flask + SQLlite Notes API with CRUD operations',
+        href:'N/A',
+        medal:'N/A'
+    }
+]   
+const projectSize = Object.keys(projects).length;
 
 function changePosition(parent, direction){
     let index = parseInt(parent.dataset.image,10);
-    index = ((index+direction % size)+size) % size;
-    const projectName = projects[index];
-    parent.style.backgroundImage = `url('/static/assets/projectImages/${projectName}.png')`;
+    index = ((index+direction % projectSize)+projectSize) % projectSize;
+
+    const projectPNG = projects[index]['png'];
+    parent.style.backgroundImage = `url('/static/assets/projectImages/${projectPNG}.png')`;
+
     const textDiv = parent.querySelector('.projectText');
     if (textDiv) {
-        textDiv.innerText = descriptions[index] || '';
+        textDiv.innerText = projects[index]['description'] || '';
+        const hrefValue = projects[index]['href'];
+        if (hrefValue !== 'N/A') {
+            textDiv.href = hrefValue;
+            textDiv.classList.remove('disabled-link');
+            textDiv.style.pointerEvents = 'auto'; // re-enable clicking
+        } else {
+            textDiv.removeAttribute('href');      // fully disables navigation
+            textDiv.classList.add('disabled-link');
+            textDiv.style.pointerEvents = 'none'; // prevents clicks
+        }
     }
-    
+    const medal = parent.querySelector('.medal');
+    if (medal) {
+        const medalPNG = projects[index]['medal'];
+        if (medalPNG !== 'N/A'){
+            medal.style.backgroundImage = `url('/static/assets/medals/${medalPNG}.png')`;
+        } else {
+            medal.style.backgroundImage = '';
+        }
+
+    }
     parent.dataset.image = index;
 }
 
@@ -107,8 +158,9 @@ document.querySelectorAll('.projectRight').forEach(btn => {
       }, 500); 
   });
 });
-window.onload = function() {
+
+document.addEventListener('DOMContentLoaded', () => {
     changePosition(project1, 0);
     changePosition(project2, 0);
     changePosition(project3, 0);
-};
+});

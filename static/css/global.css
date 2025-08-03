@@ -6,14 +6,13 @@
 }
 
 :root {
-    font-size: clamp(10px, 1.5vw, 24px);
+    font-size: clamp(10px, min(2vw, 2vh), 24px);
 }
 
 html,body{
     scroll-behavior: smooth;
     height: 100%;
     min-width: 600px;
-    min-height: 600px;
     overflow-x: hidden;
     background-color: #0E0014;
 }
@@ -25,7 +24,7 @@ html,body{
     grid-template-columns: repeat(12, 1fr); /* 12 equal-width columns */
     grid-template-rows: repeat(13, 1fr);    /* 13 equal-height rows */
     gap: 10px;
-    height: 100vh; 
+    min-height: 600px;
 }
 
 .block{
@@ -37,3 +36,8 @@ html,body{
     background-color: #547FC9;
     border-radius: 8px;
 }
+
+.emptyBlock{
+    grid-column: 1/-1;
+}
+
