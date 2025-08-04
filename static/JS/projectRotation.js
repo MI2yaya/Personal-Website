@@ -1,7 +1,7 @@
 const project1 = document.getElementById('project1');
 const project2 = document.getElementById('project2');
 const project3 = document.getElementById('project3');
-const container = document.getElementById('projects');
+const container = document.getElementById('projectPanel');
 let projects=[
     {
         png:"FFTCollatz",
@@ -22,16 +22,10 @@ let projects=[
         medal:'LISEF'
     },
     {
-        png:"356Days",
-        description:'A game dedicated to my girlfriend who I tragically lost, for all 356 days of dating.',
-        href:'N/A',
-        medal:'N/A'
-    },
-    {
-        png:"beatBlockDifficultyCalculator",
-        description:'An app that calculates difficulty in Beatblock.',
-        href:'N/A',
-        medal:'N/A'
+        png:'depressionClassification',
+        description:"BERT based classification for early depression screening.",
+        href:"javascript:loadPaper(0);document.getElementById('papers').scrollIntoView({behavior:'smooth'});",
+        medal:'goldMedal'
     },
     {
         png:'coderBackground',
@@ -44,7 +38,25 @@ let projects=[
         description:'Flask + SQLlite Notes API with CRUD operations',
         href:'N/A',
         medal:'N/A'
-    }
+    },
+    {
+        png:'doublePendulumn',
+        description:"Chaotic double-pendulum system with customizability",
+        href:'N/A',
+        medal:'N/A'
+    },
+    {
+        png:"beatBlockDifficultyCalculator",
+        description:'An app that calculates difficulty in Beatblock.',
+        href:'N/A',
+        medal:'N/A'
+    },
+    {
+        png:"356Days",
+        description:'A game dedicated to my girlfriend who I tragically lost, for all 356 days of dating.',
+        href:'N/A',
+        medal:'N/A'
+    },
 ]   
 const projectSize = Object.keys(projects).length;
 
@@ -80,6 +92,8 @@ function changePosition(parent, direction){
 
     }
     parent.dataset.image = index;
+    const projectLeft = parent.querySelector('.projectLeft')
+    projectLeft.innerHTMl='&lt;'
 }
 
 document.querySelectorAll('.projectLeft').forEach(btn => {

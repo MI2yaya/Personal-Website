@@ -59,8 +59,8 @@ const paperSize = papers.length;
 let currentPaperIndex=0;
 
 function setBlockVisibility(elementId, value) {
-    const parent = document.getElementById(elementId)
-    parent.style.display = (value === "N/A") ? "none" : "block";
+    const el = document.getElementById(elementId);
+    el.style.visibility = (value === "N/A") ? "hidden" : "visible";
 }
 
 function loadPaper(index) {
@@ -82,14 +82,14 @@ function loadPaper(index) {
 
     setBlockVisibility('paperAwards',paperData.awards);
     awardList.innerHTML='';
-    if (document.getElementById('paperAwards').checkVisibility()==true){
+    if (paperData.awards && paperData.awards !== "N/A" && Array.isArray(paperData.awards)) {
         paperData.awards.forEach(awardText => {
             const awardItem = document.createElement('li');
             awardItem.innerHTML = awardText;
             awardItem.classList.add('award');
             awardList.appendChild(awardItem);
         });
-    }   
+    }
     currentPaperIndex=index;
 }
 

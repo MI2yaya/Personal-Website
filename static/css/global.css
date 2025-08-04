@@ -13,6 +13,8 @@ html,body{
     scroll-behavior: smooth;
     height: 100%;
     min-width: 600px;
+    overflow-x: scroll;
+    scrollbar-width: none;
     overflow-x: hidden;
     background-color: #0E0014;
 }
@@ -41,3 +43,80 @@ html,body{
     grid-column: 1/-1;
 }
 
+#header {
+    position: fixed;
+    top: 10px;
+    left: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    padding: 10px 20px;
+    border-radius: 8px;
+    background-color: #251E48;
+    transition: 
+        width 0.5s ease,
+        left 0.5s ease,
+        transform 0.5s ease;
+    width: 41px;
+}
+
+.show#header {
+    width: auto;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#bars {
+    display: inline-block;
+    cursor: pointer;
+}
+
+.bar1, .bar2, .bar3 {
+    width: 35px;
+    height: 5px;
+    background-color: #ffffff;
+    margin: 6px 0;
+    transition: 0.4s;
+}
+
+.show .bar1 {
+    transform: translate(0, 11px) rotate(-45deg);
+}
+.show .bar2 {
+    opacity: 0;
+}
+.show .bar3 {
+    transform: translate(0, -11px) rotate(45deg);
+}
+
+#headerTabsContainer {
+    display: flex;
+    gap: 1vw;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateX(-10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    white-space: nowrap;
+}
+
+.show #headerTabsContainer {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.headerTab {
+    visibility: visible;
+    align-items: center;
+    justify-content: center;
+    font-size: clamp(16px,1vw,24px);
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: flex;
+    white-space: nowrap;
+}
+
+.headerTab:hover {
+    background-color: #547FC9;
+}

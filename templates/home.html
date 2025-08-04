@@ -9,35 +9,43 @@
 
 <body>
     <div class="page">
-        <div id="header" class="block"></div>
+        <div id="header" class="block">
+            <div id='bars'>
+                <div class="bar1"></div>
+                <div class="bar2"></div>
+                <div class="bar3"></div>
+            </div>
+            <div id="headerTabsContainer"></div>
+        </div>
 
+        <div id='me' class="emptyBlock"></div>
         <div id="photoMe" class="block"></div>
-        <div id="aboutMe" class="icon">Hello, My name is Michael Petrizzo!</div>
+        <div id="aboutMe" class="">Hello,</div>
 
-        <div class="break block">Projects</div>
-        <div id="projects" class="block">
-            <div id="project1" class="icon project project-left" data-image="0">
+        <div id='projects' class="break block">Projects</div>
+        <div id="projectPanel" class="">
+            <div id="project1" class="block project" data-image="0">
                 <div class='medal'></div>
                 <div class="projectBar">
-                    <div class="projectLeft"></div>
+                    <span class="projectLeft">&lt;</span>
                     <a class="projectText">Project Description</a>
-                    <div class="projectRight"></div>
+                    <span class="projectRight">&gt;</span>
                 </div>
             </div>
-            <div id="project2" class="icon project project-center" data-image="1">
+            <div id="project2" class="block project" data-image="1">
                 <div class='medal'></div>
                 <div class="projectBar">
-                    <div class="projectLeft"></div>
+                    <span class="projectLeft">&lt;</span>
                     <a class="projectText">Project Description</a>
-                    <div class="projectRight"></div>
+                    <span class="projectRight">&gt;</span>
                 </div>
             </div>
-            <div id="project3" class="icon project project-right" data-image="2">
+            <div id="project3" class="block project" data-image="2">
                 <div class='medal'></div>
                 <div class="projectBar">
-                    <div class="projectLeft"></div>
+                    <span class="projectLeft">&lt;</span>
                     <a class="projectText">Project Description</a>
-                    <div class="projectRight"></div>
+                    <span class="projectRight">&gt;</span>
                 </div>
             </div>
         </div>
@@ -52,24 +60,24 @@
             <span id="nextPaper">&gt;</span>
         </div>
         <div id="paperPublication" class='block'>
-            <h2>Publication:</h2>
+            <h3>Publication:</h3>
             <a id="paperPublicationText" href="" target="_blank" rel="noopener noreferrer" >Filler</a>
         </div>
         <div id="paperPatent" class="block">
-            <h2>Patent:</h2>
+            <h3>Patent:</h3>
             <p id="paperPatentText">Filler</p>
         </div>
         <div id='paperType' class="block">
-            <h2>Type:</h2>
+            <h3>Type:</h3>
             <p id="paperTypeText">Filler</p>
         </div>
         <div id="paperAwards" class='block'>
-            <h2>Awards:</h2>
+            <h3>Awards:</h3>
             <ul id="paperAwardsList">
                 <li>test</li>
             </ul>
         </div>
-        <div id="paperAbstract" class="icon">
+        <div id="paperAbstract" class="block">
             <h1>Abstract:</h1>
             <br></br>
             <p id="paperAbstractText">Filler</p>
@@ -80,18 +88,22 @@
     </div>
     <div class="page">
         <div class='emptyBreak'></div>
-        <div class="break block">Work Experience</div>
-        <div id='work1Description' class='icon'>
+        <div id='work' class="break block">Work Experience</div>
+        <div id='work1Description' class=''>
 
         </div>
         <div id='work1Photo' class="work block" style="background-image: url('/static/assets/logos/PhewAI.png')"></div>
         <div class='emptyBreak'></div>
         <div id='work2Photo' class="work block"></div>
-        <div id='work2Description' class='icon'>
+        <div id='work2Description' class=''>
             
         </div>
+    </div>
+    <div class="page">
+
     </div>
 </body>
 
 <script src="{{ url_for('static', filename='JS/projectRotation.js') }}" defer></script>
 <script src="{{ url_for('static', filename='JS/paperVisualizer.js') }}" defer></script>
+<script src="{{ url_for('static', filename='JS/header.js') }}" defer></script>
