@@ -1,6 +1,6 @@
 const header = document.getElementById('header');
 const bars = document.getElementById('bars')
-const sections = ['me', 'projects', 'papers', 'work', 'photos'];
+const sections = ['me', 'projects', 'papers', 'work','photos'];
 
 
 function capitalizeFirstLetter(str) {
